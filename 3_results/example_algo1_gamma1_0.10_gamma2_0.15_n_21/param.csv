@@ -1,0 +1,13 @@
+spec_nb,3
+BLM,1.000000
+optim_type,algo1
+cost_type,cost_fshlog
+lon_range,-32.65,-32.30
+lon_resol,0.01
+lat_range,-3.95,-3.75
+lat_resol,0.01
+locked_out,309,346,347,348,384,385,421,422,456,457,458,492,493,494,527,528,529,530
+locked_in,
+gap,0.10,0.15
+dpu,1
+nsol,21

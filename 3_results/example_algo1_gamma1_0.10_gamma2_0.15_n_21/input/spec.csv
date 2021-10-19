@@ -1,0 +1,4 @@
+id,name,amount,weight
+1,acoustic_biomass,0.5,1.0
+2,continental_shelf,0.5,1.0
+3,shelf_break,0.5,1.0
