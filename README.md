@@ -1,5 +1,5 @@
 # flexibility
-Code associated with publication "Provide flexibility in the reserve site selection problem with exact resolution methods"
+Code associated with the publication "Provide flexibility in the reserve site selection problem with exact resolution methods"
 
 # steps
 1. If this is the first time the code run on your computer, you have to set install_pkg variable to 1 so the needed Julia package can be installed. Otherwise, set the variable to 0
