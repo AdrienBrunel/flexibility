@@ -120,9 +120,6 @@
 			if (termination_status(P) != MOI.INFEASIBLE_OR_UNBOUNDED)
 				k = k+1
 				X[:,k] = value.(P[:x]).data
-				#for i in 1:(k-1)
-				#	@printf("c%d : d(x%d,x)=%d \n",i,i,sum(X[j,i]*(1-X[j,k]) for j in 1:756))
-				#end
 				@printf("iteration %d : z=%.2f \n",k,objective_value(P))
 			end
 		end
@@ -174,10 +171,11 @@
 
 		# recursive algo to cut known solutions
 		k = 1
-		@objective(P, Max, sum(xhat[j,1]*(1-x[j,1])+x[j,1]*(1-xhat[j,1]) for j in PU))
+		@variable(P, delta)
+		@objective(P, Max, delta)
 		@constraint(P, budget, sum(data.c[j,1]*x[j,1] for j in PU) + meta.BLM*sum(data.SB[l,1]*x[data.SB[l,2],1] for l in LZ) - meta.BLM*sum(data.SB[l,1]*z[l,1]  for l in LZ) + meta.BLM*sum(data.SEF[f,1]*x[data.SEF[f,2],1] for f in FI) <= (1+meta.gap[2])*zhat)
 		while (termination_status(P) != MOI.INFEASIBLE_OR_UNBOUNDED) & (k<meta.nsol)
-			@constraint(P, sum(xhat[j,1]*(1-x[j,1])+x[j,1]*(1-xhat[j,1]) for j in PU) >= 1)
+			@constraint(P, sum(xhat[j,1]*(1-x[j,1]) for j in PU) >= delta)
 			optimize!(P);
 			if (termination_status(P) != MOI.INFEASIBLE_OR_UNBOUNDED)
 				k = k+1
@@ -185,8 +183,10 @@
 				zhat = objective_value(P)
 
 				xhat = value.(P[:x]).data
-				@printf("iteration %d : distance D=%d\n",k,zhat)
 				X[:,k] = xhat
+				for tmp in 1:(k-1)
+					@printf("d(x^%d,x)=%d\n",tmp-1,PseudoDistance(X[:,tmp],xhat))
+				end
 			end
 		end
 
