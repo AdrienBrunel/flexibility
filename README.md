@@ -1,7 +1,7 @@
-# flexibility
-Code associated with the publication "Provide flexibility in the reserve site selection problem with exact resolution methods"
+# Flexibility
+Code associated with the publication "Accountable flexibility in the reserve site selection problem with exact optimisation methods"
 
-# steps
+# Steps
 1. If this is the first time the code run on your computer, you have to set install_pkg variable to 1 so the needed Julia package can be installed. Otherwise, set the variable to 0
 
 2. Julia version for this code is 1.4.2
