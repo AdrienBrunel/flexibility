@@ -1,5 +1,5 @@
 # Flexibility
-Code associated with the publication "Accountable flexibility in the reserve site selection problem with exact optimisation methods"
+Code deprecated. The most up-to-date code can be found at https://github.com/AdrienBrunel/rssp_presentation_set.
 
 # Steps
 1. If this is the first time the code run on your computer, you have to set install_pkg variable to 1 so the needed Julia package can be installed. Otherwise, set the variable to 0
